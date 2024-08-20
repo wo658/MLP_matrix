@@ -117,7 +117,7 @@ int main() {
         out.feed(2, hidden2.Node);
 
 
-        double loss = out.calLoss(Y(i,0),i);
+        double loss = out.calLoss(Y(i,0));
 
         out.back(loss, hidden2.Node);
         hidden2.back(out.diff, out.inW, hidden1.Node);

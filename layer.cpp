@@ -77,13 +77,13 @@ void outLayer::back(double loss, RowVectorXd preLayerActivae) {
 	double dw = temp * preLayerActivae.transpose();
 	for (int i = 0; i < inW.cols(); i++) {
 		for (int j = 0; j < inW.rows(); j++)
-			//this->inW(i, j) = this->inW(i,j) - 0.00001;
-			//this->inW(i, j) = this->inW(i, j) - learning_rate * dw;
-		this->bias(0,i) = this->bias(0,i) - learning_rate * dw;
+			this->inW(j, i) = this->inW(j, i) - learning_rate * dw;
+		this->bias(0,0) = this->bias(0,0) - learning_rate * dw;
 	}
 }
-double outLayer::calLoss(double Y ,int i) {
-	return (Y - this->Node(0, i) * (Y - this->Node(0, i)));
+double outLayer::calLoss(double Y) {
+	std::cout << this->Node(0,0);
+	return (Y - this->Node(0, 0) * (Y - this->Node(0, 0)));
 }
 
 
